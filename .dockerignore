@@ -1,0 +1,24 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Build and development
+.env*
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*~
+
+# Documentation
+*.md
+LICENSE
+AUTHORS
+CONTRIBUTORS
+
+# CI/CD
+.github/
