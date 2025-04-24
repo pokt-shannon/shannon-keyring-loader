@@ -8,6 +8,7 @@ This utility imports wallet keys into a Cosmos SDK-compatible keyring (from mnem
   - [Running Locally](#running-locally)
   - [Running via Docker](#running-via-docker)
 3. [Configuration Sources](#configuration-sources)
+4. [File Examples](#file-examples)
 
 ---
 
@@ -101,4 +102,125 @@ To switch to Kubernetes-based sources, set `CONFIG_SOURCE=kubernetes` and the ap
 
 ---
 
-**Enjoy importing and managing your Cosmos-SDK keys with ease!**
+## File Examples
+
+### keys.json Example
+
+```json
+[
+  {
+    "mnemonic": "<mnemonic seed here ...>",
+    "start_index": 0,
+    "end_index": 0,
+    "service_id": []
+  },
+  {
+    "mnemonic": "<another mnemonic seed here too but this time with more keys and service specific>",
+    "start_index": 100,
+    "end_index": 102,
+    "service_id": ["eth"]
+  },
+  {
+    "hex": "<hexPrivateKeyHere>",
+    "service_id": ["eth", "polygon"]
+  }
+]
+```
+
+### config.yaml Example
+
+```yaml
+# empty because will be filled with the generated keys
+default_signing_key_names: []
+smt_store_path: /home/pocket/.pocket/smt
+pocket_node:
+  query_node_rpc_url: https://shannon-testnet-grove-rpc.beta.poktroll.com:443
+  query_node_grpc_url: tcp://shannon-testnet-grove-grpc.beta.poktroll.com
+  tx_node_rpc_url: https://shannon-testnet-grove-rpc.beta.poktroll.com:443
+suppliers:
+  - service_id: anvil
+    # empty because will be filled with the generated keys
+    signing_key_names: []
+    service_config:
+      backend_url: http://anvil:8545
+      publicly_exposed_endpoints:
+        - relayminer1
+    listen_url: http://0.0.0.0:8545
+  - service_id: eth
+    # empty because will be filled with the generated keys
+    signing_key_names: []
+    service_config:
+      backend_url: http://eth:8545
+      publicly_exposed_endpoints:
+        - relayminer1
+    listen_url: http://0.0.0.0:8545
+  - service_id: polygon
+    # empty because will be filled with the generated keys
+    signing_key_names: []
+    service_config:
+      backend_url: http://polygon:8545
+      publicly_exposed_endpoints:
+        - relayminer1
+    listen_url: http://0.0.0.0:8545
+metrics:
+  enabled: true
+  addr: :9090
+pprof:
+  enabled: true
+  addr: localhost:6060
+ping:
+  enabled: true
+  addr: localhost:8081
+```
+
+### generated.config.yaml Example
+
+```yaml
+# empty because will be filled with the generated keys
+default_signing_key_names: 
+  - addressFromFirstMnemonic
+smt_store_path: /home/pocket/.pocket/smt
+pocket_node:
+  query_node_rpc_url: https://shannon-testnet-grove-rpc.beta.poktroll.com:443
+  query_node_grpc_url: tcp://shannon-testnet-grove-grpc.beta.poktroll.com
+  tx_node_rpc_url: https://shannon-testnet-grove-rpc.beta.poktroll.com:443
+suppliers:
+  - service_id: anvil
+    # empty because will be filled with the generated keys
+    signing_key_names: []
+    service_config:
+      backend_url: http://anvil:8545
+      publicly_exposed_endpoints:
+        - relayminer1
+    listen_url: http://0.0.0.0:8545
+  - service_id: eth
+    # empty because will be filled with the generated keys
+    signing_key_names: 
+      - addressOneFromSecondMnemonic
+      - addressTwoFromSecondMnemonic
+      - addressFromHexPrivateKey
+    service_config:
+      backend_url: http://eth:8548
+      publicly_exposed_endpoints:
+        - relayminer1
+    listen_url: http://0.0.0.0:8545
+  - service_id: polygon
+    # empty because will be filled with the generated keys
+    signing_key_names:
+      - addressFromHexPrivateKey
+    service_config:
+      backend_url: http://polygon:8545
+      publicly_exposed_endpoints:
+        - relayminer1
+    listen_url: http://0.0.0.0:8545
+metrics:
+  enabled: true
+  addr: :9090
+pprof:
+  enabled: true
+  addr: localhost:6060
+ping:
+  enabled: true
+  addr: localhost:8081
+```
+
