@@ -57,7 +57,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ secrets.GITHUB_REPOSITORY_OWNER }}/shannon-keyring-loader
+          images: ghcr.io/pokt-shannon/shannon-keyring-loader
           tags: |
             type=match,pattern=v(.*),group=1,value=${{ env.VERSION }}
 
