@@ -564,6 +564,12 @@ func importAndRegisterKeys(appConfig *AppConfig, keys []WalletKeySpec, walletKey
 func writeRelayMinerConfig(appConfig *AppConfig, relayMinerConfig *poktrollconfig.YAMLRelayMinerConfig) error {
 	var mode os.FileMode = 0644
 
+	// ignore generating relayminer config when GENERATE_RELAYMINER_CONFIG=false 
+	if !appConfig.GenerateRelayMinerConfig {
+		log.Debug().Msg("Skipping relay miner config generation as it is disabled")
+		return nil
+	}
+	
 	// only if we read the file from the disk, we can keep the original permissions
 	if appConfig.ConfigSource == FileSource {
 		// Get file info for original permissions
