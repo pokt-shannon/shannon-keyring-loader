@@ -34,13 +34,13 @@ jobs:
         id: set-vars
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
-            # Extract version from the tag name on push event
+            # Extract app name and version from the tag name on push event
             VERSION="${GITHUB_REF_NAME##*-}"
           else
             # Use inputs from workflow_dispatch event
             VERSION="${{ inputs.VERSION }}"
-          
-            # Ensure VERSION is provided
+
+            # Ensure APP_NAME and VERSION are provided
             if [ -z "$VERSION" ]; then
               echo "Error: VERSION must be provided when triggering manually."
               exit 1
@@ -51,6 +51,7 @@ jobs:
 
       - name: Log Parsed Variables
         run: |
+          echo "App Name: $APP_NAME"
           echo "Version: $VERSION"
 
       - name: Docker meta
@@ -59,6 +60,8 @@ jobs:
         with:
           images: ghcr.io/pokt-shannon/shannon-keyring-loader
           tags: |
+            # set latest tag for default branch
+            type=raw,value=latest,enable={{is_default_branch}}
             type=match,pattern=v(.*),group=1,value=${{ env.VERSION }}
 
       - name: Login to GitHub Container Registry

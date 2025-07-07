@@ -22,3 +22,9 @@ CONTRIBUTORS
 
 # CI/CD
 .github/
+
+# any local yaml file
+*.yaml
+
+# local test folder
+*.shannon-keyring-loader

@@ -132,6 +132,8 @@ github.com/dgraph-io/ristretto v0.1.1/go.mod h1:S1GPSBCYCIhmVNfcth17y2zZtQT6wzkz
 github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2/go.mod h1:SqUrOPUnsFjfmXRMNPybcSiG0BgUW2AuFH8PAnS2iTw=
 github.com/dgryski/go-farm v0.0.0-20200201041132-a6ae2369ad13 h1:fAjc9m62+UWV/WAFKLNi6ZS0675eEUC9y3AlwSbQu1Y=
 github.com/dgryski/go-farm v0.0.0-20200201041132-a6ae2369ad13/go.mod h1:SqUrOPUnsFjfmXRMNPybcSiG0BgUW2AuFH8PAnS2iTw=
+github.com/docker/go-units v0.5.0 h1:69rxXcBk27SvSaaxTtLh/8llcHD8vYHT7WSdRZ/jvr4=
+github.com/docker/go-units v0.5.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
 github.com/dustin/go-humanize v1.0.0/go.mod h1:HtrtbFcZ19U5GC7JDqmcUSB87Iq5E25KnS6fMYU6eOk=
 github.com/dustin/go-humanize v1.0.1 h1:GzkhY7T5VNhEkwH0PVJgjz+fX1rhBrR7pRT3mDkpeCY=
 github.com/dustin/go-humanize v1.0.1/go.mod h1:Mu1zIs6XwVuF/gI1OepvI0qD18qycQx+mFykh5fBlto=
@@ -406,12 +408,8 @@ github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 h1:Jamvg5psRIccs7FGNTlIRMkT8wgtp5eCXdBlqhYGL6U=
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/pokt-network/poktroll v0.1.19 h1:6m4LmxY3jH2IcdAjPWUz6dbdVjqIJ5qOrzV+ISobUX4=
-github.com/pokt-network/poktroll v0.1.19/go.mod h1:8Ukz3y5o5MhEmCVrdVV0/S/IMgRPW5ZZQST+67BQPT4=
-github.com/pokt-network/poktroll v0.1.20 h1:0ZJziJ6rxT1dm86gFIFYI4ecc7TNSlICfsjN65gSuUw=
-github.com/pokt-network/poktroll v0.1.20/go.mod h1:8Ukz3y5o5MhEmCVrdVV0/S/IMgRPW5ZZQST+67BQPT4=
-github.com/pokt-network/poktroll v0.1.23-0.20250625045319-4d1f5f3642b3 h1:N43lDvQ5lsS8QNtRAxur7cP3tJJ4L4qJ22W6+bGnJf0=
-github.com/pokt-network/poktroll v0.1.23-0.20250625045319-4d1f5f3642b3/go.mod h1:8Ukz3y5o5MhEmCVrdVV0/S/IMgRPW5ZZQST+67BQPT4=
+github.com/pokt-network/poktroll v0.1.27-0.20250707210413-9a2ba3001b15 h1:oCfkFgxwQPgF0JDQsNFdvD4aOpjSMceaXHT+/jDnpOw=
+github.com/pokt-network/poktroll v0.1.27-0.20250707210413-9a2ba3001b15/go.mod h1:QpGbqPMEx1Sje+5BCIKOCNmSmJxYsczi9uMzr8mnHm0=
 github.com/prometheus/client_golang v0.9.1/go.mod h1:7SWBe2y4D6OKWSNQJUaRYU/AaXPKyh/dDVn+NZz0KFw=
 github.com/prometheus/client_golang v1.0.0/go.mod h1:db9x61etRT2tGnBNRi70OPL5FsnadC4Ky3P0J6CfImo=
 github.com/prometheus/client_golang v1.4.0/go.mod h1:e9GMxYsXl05ICDXkRhurwBS4Q3OK1iX/F2sw+iXX5zU=
