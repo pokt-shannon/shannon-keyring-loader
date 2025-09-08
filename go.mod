@@ -6,7 +6,7 @@ require (
 	github.com/cosmos/cosmos-sdk v0.53.0
 	github.com/cosmos/go-bip39 v1.0.0
 	github.com/joho/godotenv v1.5.1
-	github.com/pokt-network/poktroll v0.1.27-0.20250707210413-9a2ba3001b15
+	github.com/pokt-network/poktroll v0.1.28
 	github.com/rs/zerolog v1.34.0
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/apimachinery v0.28.1

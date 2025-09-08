@@ -62,6 +62,7 @@ type AppConfig struct {
 // WalletKeySpec represents the structure for key definition and import.
 // One of Mnemonic OR Hex is required.
 type WalletKeySpec struct {
+	Name       string   `json:"name,omitempty"`
 	Mnemonic   string   `json:"mnemonic,omitempty"`
 	StartIndex int      `json:"start_index,omitempty"`
 	EndIndex   int      `json:"end_index,omitempty"`
@@ -259,9 +260,11 @@ func newKeyring(appConfig *AppConfig) (keyring.Keyring, error) {
 }
 
 // importSecp256k1PrivateKey handles the common logic for importing a private key into the keyring
-func importSecp256k1PrivateKey(kr keyring.Keyring, privKey *secp256k1.PrivKey) (string, error) {
+func importSecp256k1PrivateKey(kr keyring.Keyring, privKey *secp256k1.PrivKey, name string) (string, error) {
 	address := sdk.AccAddress(privKey.PubKey().Address())
-	name := address.String()
+	if name == "" {
+		name = address.String()
+	}
 
 	log.Debug().Str("address", address.String()).Msg("Attempting to import private key")
 
@@ -504,7 +507,7 @@ func importAndRegisterKeys(appConfig *AppConfig, keys []WalletKeySpec, walletKey
 					return fmt.Errorf("error deriving private key at index %d: %w", j, err)
 				}
 
-				name, err = importSecp256k1PrivateKey(walletKeyring, privKey)
+				name, err = importSecp256k1PrivateKey(walletKeyring, privKey, entry.Name)
 				if err != nil {
 					return fmt.Errorf("error importing derived key at index %d: %w", j, err)
 				}
@@ -532,7 +535,7 @@ func importAndRegisterKeys(appConfig *AppConfig, keys []WalletKeySpec, walletKey
 			}
 
 			privKey := &secp256k1.PrivKey{Key: privKeyBytes}
-			name, err = importSecp256k1PrivateKey(walletKeyring, privKey)
+			name, err = importSecp256k1PrivateKey(walletKeyring, privKey, entry.Name)
 			if err != nil {
 				return fmt.Errorf("error importing hex key: %w", err)
 			}
@@ -564,12 +567,12 @@ func importAndRegisterKeys(appConfig *AppConfig, keys []WalletKeySpec, walletKey
 func writeRelayMinerConfig(appConfig *AppConfig, relayMinerConfig *poktrollconfig.YAMLRelayMinerConfig) error {
 	var mode os.FileMode = 0644
 
-	// ignore generating relayminer config when GENERATE_RELAYMINER_CONFIG=false 
+	// ignore generating relayminer config when GENERATE_RELAYMINER_CONFIG=false
 	if !appConfig.GenerateRelayMinerConfig {
 		log.Debug().Msg("Skipping relay miner config generation as it is disabled")
 		return nil
 	}
-	
+
 	// only if we read the file from the disk, we can keep the original permissions
 	if appConfig.ConfigSource == FileSource {
 		// Get file info for original permissions
