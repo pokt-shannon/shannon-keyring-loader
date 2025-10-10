@@ -6,7 +6,7 @@ require (
 	github.com/cosmos/cosmos-sdk v0.53.0
 	github.com/cosmos/go-bip39 v1.0.0
 	github.com/joho/godotenv v1.5.1
-	github.com/pokt-network/poktroll v0.1.28
+	github.com/pokt-network/poktroll v0.1.30-rc2.0.20251010211636-095ca6545599
 	github.com/rs/zerolog v1.34.0
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/apimachinery v0.28.1
@@ -82,7 +82,7 @@ require (
 	github.com/golang/glog v1.2.4 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/golang/snappy v0.0.4 // indirect
+	github.com/golang/snappy v0.0.5-0.20220116011046-fa5810519dcb // indirect
 	github.com/google/btree v1.1.3 // indirect
 	github.com/google/flatbuffers v1.12.1 // indirect
 	github.com/google/gnostic-models v0.6.8 // indirect
